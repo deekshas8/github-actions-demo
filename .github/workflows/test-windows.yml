@@ -1,0 +1,19 @@
+name: Test Windows Compatibility
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Test && operator (sequential execution)
+      shell: cmd
+      run: echo "First command" && echo "Second command"
+      
+    - name: Test & operator (background execution)
+      shell: cmd
+      run: echo "Background command" & echo "Foreground command"
